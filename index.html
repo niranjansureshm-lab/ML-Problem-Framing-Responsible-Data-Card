@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer Churn | Responsible Data Card</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#0b1020;--panel:#151d33;--muted:#aab5ca;--text:#f5f7ff;--accent:#79e0c3;--line:#2b3855}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0b1020,#121b31);color:var(--text);font:15px/1.6 Arial,sans-serif}
+header{padding:54px 7%;background:radial-gradient(circle at 85% 15%,#244b61 0,transparent 32%),#101a2d;border-bottom:1px solid var(--line)}
+.tag{color:var(--accent);font-weight:bold;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(32px,5vw,54px);line-height:1.1;margin:12px 0}header p{color:var(--muted);max-width:760px}
+main{max-width:1150px;margin:auto;padding:30px 22px 70px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.metric{font-size:34px;font-weight:800;color:var(--accent)}.label{color:var(--muted);font-size:13px}
+h2{font-size:23px;margin:0 0 14px}h3{margin:0 0 8px;color:var(--accent)}
+p,li{color:#d5dced}.muted{color:var(--muted)}.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+canvas{max-height:260px}.pill{display:inline-block;padding:4px 10px;border:1px solid #42657a;border-radius:30px;color:var(--accent);font-size:12px;margin:3px}
+table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line)}th{color:var(--accent)}
+footer{padding:22px 7%;border-top:1px solid var(--line);color:var(--muted)}
+@media(max-width:600px){header{padding:38px 22px}.card{padding:17px}}
+</style></head>
+<body>
+<header><div class="tag">Responsible AI · Dataset documentation</div>
+<h1>Customer Churn<br>Responsible Data Card</h1>
+<p>A transparent overview of the supplied customer churn training dataset, its intended use, basic descriptive findings, limitations, and responsible-use considerations.</p>
+<span class="pill">Training dataset</span><span class="pill">12 records</span><span class="pill">Descriptive analysis only</span></header>
+<main>
+<section class="grid">
+<div class="card"><div class="label">Total customers</div><div class="metric">12</div></div>
+<div class="card"><div class="label">Churned customers</div><div class="metric">5</div></div>
+<div class="card"><div class="label">Active customers</div><div class="metric">7</div></div>
+<div class="card"><div class="label">Observed churn rate</div><div class="metric">41.67%</div></div>
+</section>
+<section class="card"><h2>1. Dataset overview</h2>
+<p><b>Dataset name:</b> customer-churn-training.csv</p>
+<p><b>Purpose:</b> Explore customer churn patterns in a small training sample. The target column is <code>churned</code> (1 = churned, 0 = active).</p>
+<p><b>Record count:</b> 12 customers. <b>Feature count:</b> 6 input fields plus the customer identifier and target field.</p>
+<p><b>Fields:</b> customer_id, tenure_months, support_tickets, monthly_spend_inr, last_login_days, plan_type, churned.</p>
+</section>
+<section class="card"><h2>2. Descriptive findings</h2>
+<p>In this sample, customers marked as churned had a shorter average tenure, more support tickets on average, and more days since their last login than active customers. These are associations in this dataset, not proof that any one factor caused churn.</p>
+<div class="charts">
+<div><h3>Customer status</h3><canvas id="statusChart"></canvas></div>
+<div><h3>Average support tickets</h3><canvas id="ticketChart"></canvas></div>
+</div></section>
+<section class="card"><h2>3. Plan-level observation</h2>
+<table><thead><tr><th>Plan</th><th>Customers</th><th>Churned</th><th>Observed churn rate</th></tr></thead>
+<tbody><tr><td>Basic</td><td>5</td><td>5</td><td>100%</td></tr><tr><td>Standard</td><td>4</td><td>0</td><td>0%</td></tr><tr><td>Pro</td><td>3</td><td>0</td><td>0%</td></tr></tbody></table>
+<p class="muted">These percentages are based on very small groups and should not be generalized to all customers or used alone for business decisions.</p>
+</section>
+<section class="card"><h2>4. Intended and inappropriate uses</h2>
+<h3>Intended uses</h3><ul><li>Educational data analysis and visualization.</li><li>Practicing data cleaning, descriptive statistics, and responsible documentation.</li><li>Generating hypotheses for further investigation with a larger, representative dataset.</li></ul>
+<h3>Not appropriate for</h3><ul><li>Making automated decisions about an individual customer.</li><li>Penalizing customers, denying service, or changing prices based only on this sample.</li><li>Claiming reliable predictive performance or causal relationships.</li></ul>
+</section>
+<section class="card"><h2>5. Data quality and limitations</h2>
+<ul><li>The supplied file contains 12 rows and 7 columns.</li><li>No missing values were found in the supplied sample.</li><li>Customer IDs are identifiers and should not be treated as predictive signals.</li><li>The sample is small; observed patterns may be unstable and may not represent the wider customer base.</li><li>The file does not provide collection dates, sampling methodology, geographic coverage, or consent/provenance details.</li></ul>
+</section>
+<section class="card"><h2>6. Privacy, fairness and responsible use</h2>
+<ul><li>Keep customer-level records private and share only aggregated results where possible.</li><li>Do not attempt to identify people from customer IDs or combine this file with external personal data.</li><li>Check data provenance, permissions, retention rules, and access controls before any real-world use.</li><li>Assess model performance across relevant groups if suitable, lawful, and consented group data becomes available.</li><li>Provide human review and a way to challenge consequential decisions.</li></ul>
+</section>
+<section class="card"><h2>7. Recommended next steps</h2>
+<ol><li>Obtain a larger, representative dataset with documented collection and consent details.</li><li>Validate data definitions, time windows, and the meaning of the churn label.</li><li>Use a train/validation/test split only when sample size is sufficient.</li><li>Evaluate precision, recall, calibration, and subgroup performance before considering a predictive model.</li><li>Review privacy, fairness, and business impact with responsible stakeholders.</li></ol>
+</section>
+</main><footer>Prepared for educational use · Customer Churn & Responsible Data Card</footer>
+<script>
+const common={responsive:true,plugins:{legend:{labels:{color:'#d5dced'}}},scales:{x:{ticks:{color:'#d5dced'},grid:{color:'#2b3855'}},y:{beginAtZero:true,ticks:{color:'#d5dced'},grid:{color:'#2b3855'}}}};
+new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['Active','Churned'],datasets:[{data:[7,5],backgroundColor:['#79e0c3','#ff9b85'],borderColor:'#151d33'}]},options:{responsive:true,plugins:{legend:{labels:{color:'#d5dced'}}}}});
+new Chart(document.getElementById('ticketChart'),{type:'bar',data:{labels:['Active','Churned'],datasets:[{label:'Average tickets',data:[1.14,3.8],backgroundColor:['#79e0c3','#ff9b85']}]},options:common});
+</script></body></html>

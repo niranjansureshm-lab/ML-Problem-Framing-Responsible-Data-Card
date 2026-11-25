@@ -1,0 +1,4 @@
+plan_type,customers,churned,churn_rate
+Basic,5,5,100.0
+Pro,3,0,0.0
+Standard,4,0,0.0

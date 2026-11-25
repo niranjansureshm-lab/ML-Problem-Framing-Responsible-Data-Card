@@ -1,0 +1,57 @@
+{
+  "total_customers": 12,
+  "churned_customers": 5,
+  "active_customers": 7,
+  "churn_rate_percent": 41.67,
+  "missing_cells": 0,
+  "duplicate_customer_ids": 0,
+  "columns": [
+    "customer_id",
+    "tenure_months",
+    "support_tickets",
+    "monthly_spend_inr",
+    "last_login_days",
+    "plan_type",
+    "churned"
+  ],
+  "numeric_means_by_churn": {
+    "active": {
+      "tenure_months": 17.86,
+      "support_tickets": 1.14,
+      "monthly_spend_inr": 1127.57,
+      "last_login_days": 3.71
+    },
+    "churned": {
+      "tenure_months": 4.2,
+      "support_tickets": 3.8,
+      "monthly_spend_inr": 619.0,
+      "last_login_days": 18.8
+    }
+  },
+  "plan_summary": [
+    {
+      "plan_type": "Basic",
+      "customers": 5,
+      "churned": 5,
+      "churn_rate": 100.0
+    },
+    {
+      "plan_type": "Pro",
+      "customers": 3,
+      "churned": 0,
+      "churn_rate": 0.0
+    },
+    {
+      "plan_type": "Standard",
+      "customers": 4,
+      "churned": 0,
+      "churn_rate": 0.0
+    }
+  ],
+  "limitations": [
+    "The dataset contains only 12 customer records.",
+    "The dataset is a small training sample and may not represent the wider customer population.",
+    "The data supports descriptive comparisons, not proof of causation.",
+    "No demographic or sensitive personal attributes are included in the supplied columns."
+  ]
+}
